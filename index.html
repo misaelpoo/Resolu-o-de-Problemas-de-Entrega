@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Problem Resolution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            color: #1a2332;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 3px solid #131921;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-logo svg {
+            width: 44px;
+            height: 44px;
+        }
+
+        .header-title {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #131921;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e8ecf0;
+            border-radius: 18px;
+            padding: 32px 22px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #131921, #2d3a4a);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #131921;
+            box-shadow: 0 16px 48px rgba(19, 25, 33, 0.15),
+                        0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            background: #131921;
+        }
+
+        .card-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 18px;
+            background: #f0f2f5;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 36px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3a4a;
+            line-height: 1.4;
+        }
+
+        .card:hover .card-title {
+            color: #131921;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 16px;
+                flex-direction: row;
+            }
+
+            .header img {
+                height: 32px !important;
+            }
+
+            .header-title {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 20px 12px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .card {
+                padding: 18px 12px;
+                border-radius: 14px;
+            }
+
+            .card-icon {
+                width: 52px;
+                height: 52px;
+                border-radius: 14px;
+                margin-bottom: 12px;
+            }
+
+            .card-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .card-title {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .card {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                padding: 16px;
+                gap: 14px;
+            }
+
+            .card-icon {
+                margin: 0;
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+            }
+
+            .card-title {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="Logo_Amazon.jpg" alt="Amazon" style="height: 44px; object-fit: contain;">
+        <div class="header-logo">
+            <div>
+                <div class="header-title">Resolução de Problemas de Entrega</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Card 1: Problema com GPS -->
+            <div class="card" onclick="window.location.href='gps.html'">
+                <div class="card-icon">📍❌</div>
+                <div class="card-title">Problema com GPS</div>
+            </div>
+
+            <!-- Card 2: Pacote danificado -->
+            <div class="card" onclick="window.location.href='pacote-danificado.html'">
+                <div class="card-icon">📦💥</div>
+                <div class="card-title">Pacote Danificado</div>
+            </div>
+
+            <!-- Card 3: Pacote não listado no dispositivo -->
+            <div class="card" onclick="window.location.href='pacote-nao-listado.html'">
+                <div class="card-icon">📱❓</div>
+                <div class="card-title">Pacote Não Listado no Dispositivo</div>
+            </div>
+
+            <!-- Card 4: Pacote físico ausente -->
+            <div class="card" onclick="window.location.href='pacote-fisico-ausente.html'">
+                <div class="card-icon">📦🚫</div>
+                <div class="card-title">Pacote Físico Ausente</div>
+            </div>
+
+            <!-- Card 5: Localizar código pacote OTP -->
+            <div class="card" onclick="window.location.href='localizar-otp.html'">
+                <div class="card-icon">🔐📲</div>
+                <div class="card-title">Localizar Código Pacote OTP</div>
+            </div>
+
+            <!-- Card 6: Não foi possível acessar o local -->
+            <div class="card" onclick="window.location.href='nao-possivel-acessar.html'">
+                <div class="card-icon">🚧🏠</div>
+                <div class="card-title">Não Foi Possível Acessar o Local</div>
+            </div>
+
+            <!-- Card 7: Cliente reprogramou a entrega -->
+            <div class="card" onclick="window.location.href='reprogramou-entrega.html'">
+                <div class="card-icon">📅🔄</div>
+                <div class="card-title">Cliente Reprogramou a Entrega</div>
+            </div>
+
+            <!-- Card 8: Endereço não localizado -->
+            <div class="card" onclick="window.location.href='endereco-nao-localizado.html'">
+                <div class="card-icon">🗺️❌</div>
+                <div class="card-title">Endereço Não Localizado</div>
+            </div>
+
+            <!-- Card 9: Cliente se mudou -->
+            <div class="card" onclick="window.location.href='cliente-mudou.html'">
+                <div class="card-icon">🏠➡️</div>
+                <div class="card-title">Cliente Se Mudou de Endereço</div>
+            </div>
+
+            <!-- Card 10: Problemas climáticos -->
+            <div class="card" onclick="window.location.href='problemas-climaticos.html'">
+                <div class="card-icon">🌧️⛈️</div>
+                <div class="card-title">Problemas Climáticos</div>
+            </div>
+
+            <!-- Card 11: Empresa fechada -->
+            <div class="card" onclick="window.location.href='empresa-fechada.html'">
+                <div class="card-icon">🏢🔒</div>
+                <div class="card-title">Empresa Fechada</div>
+            </div>
+
+            <!-- Card 12: Cliente não encontrado -->
+            <div class="card" onclick="window.location.href='cliente-nao-encontrado.html'">
+                <div class="card-icon">👤❌</div>
+                <div class="card-title">Cliente Não Encontrado</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigate(category) {
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = '';
+                alert(`Navegando para: ${category}`);
+            }, 150);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 80 * index);
+            });
+        });
+    </script>
+</body>
+</html>
